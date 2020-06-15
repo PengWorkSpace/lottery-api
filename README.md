@@ -1,5 +1,5 @@
 ### 项目结构说明
-* 项目是完全按照Gopher 公认的 [项目标准结构](https://github.com/golang-standards/project-layout)，很多组件的实现大量参考B站开源的Kratos设计理念。采用go module管理，基于go 1.14 版本开发
+* 项目是完全按照Gopher 公认的 [项目标准结构](https://github.com/golang-standards/project-layout)，参考B站开源的Kratos设计理念。采用go module管理，基于go 1.14 版本开发
 * cmd 程序主入口 main.go
 * internal 程序集包 包括dao层、model层、server层、service层
 * utils 公用程序包
