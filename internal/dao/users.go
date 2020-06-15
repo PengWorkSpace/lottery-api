@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	_findUserSql = `SELECT id, phone, draw_right, article, ctime FROM lottery_users %s`
+	_findUserSql = `SELECT id, phone, draw_right, article, ctime FROM lottery_users `
 	_saveUserSql = `INSERT INTO lottery_users (phone, draw_right, article) VALUES (?,?,?)`
 )
 

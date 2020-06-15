@@ -23,10 +23,10 @@ func (s *Svc) VerifyUserPhone(c context.Context, phone int64) (isOk bool, messge
 	if err != nil {
 		s.dao.Logger.Printf("find user err (%v)", err)
 	}
-	if user != nil {
+	if user != nil && user.Id > 0 {
 		return false, "手机号已注册"
 	}
-	return
+	return true, "手机号未注册"
 }
 
 func (s *Svc) UserArticles(c context.Context) (data *model.UserInvolvesInfosReply, err error) {

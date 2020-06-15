@@ -1,3 +1,1 @@
-2020/06/15 10:24:02.464319 find user err (Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s where phone = 15377541072' at line 1)
-2020/06/15 10:24:04.281237 find user err (Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s where phone = 15377541072' at line 1)
-2020/06/15 10:24:05.346283 find user err (Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s where phone = 15377541072' at line 1)
+2020/06/15 14:31:47.106974 find user err (Error 1054: Unknown column 'ctime' in 'field list')

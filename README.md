@@ -17,4 +17,8 @@
 * 导出操作采用 encondig/csv 库
 
 
+测试说明
+* 报名注册 
+请求地址：http://localhost:8080/lottery/join
+![注册已存在](/images/lottery1.png)
 

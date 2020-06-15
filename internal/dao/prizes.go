@@ -26,7 +26,7 @@ func (d *Dao) FetchPrizes(c context.Context) (list []*model.Prize, err error) {
 	for rows.Next() {
 		t := new(model.Prize)
 		err = rows.Scan(
-			&t.Id, &t.PrizeId, &t.Total, &t.Stock, &t.Version,
+			&t.Id, &t.PrizeId, &t.Total, &t.Stock,
 		)
 		if err != nil {
 			d.Logger.Printf("d.FetchPrizes rows.Scan error(%v)", err)
@@ -43,7 +43,7 @@ func (d *Dao) FetchPrizes(c context.Context) (list []*model.Prize, err error) {
 
 func (d *Dao) FindOnePrize(c context.Context, conditions string) (prize *model.Prize, err error) {
 	prize = new(model.Prize)
-	err = d.db.QueryRowContext(c, _findPrizeSql+conditions).Scan(&prize.Id, &prize.PrizeId, &prize.Total, &prize.Stock, &prize.Version)
+	err = d.db.QueryRowContext(c, _findPrizeSql+conditions).Scan(&prize.Id, &prize.PrizeId, &prize.Total, &prize.Stock)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return nil, nil
