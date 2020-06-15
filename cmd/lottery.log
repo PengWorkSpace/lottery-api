@@ -1,6 +1,0 @@
-2020/06/15 15:21:59.871354 d.SetLock key(贴纸一张) requestId(d191024a-aed8-11ea-a864-4c32758a1b6f) ex(100) err(read tcp 10.18.26.146:58704->117.50.133.16:6379: read: operation timed out)
-2020/06/15 15:21:59.871799 s.DrawPrize Get：  请求频繁，请稍后再试
-2020/06/15 15:22:38.790396 d.GetLock key(贴纸一张) err(read tcp 10.18.26.146:58730->117.50.133.16:6379: read: operation timed out)
-2020/06/15 15:23:26.882250 d.SetLock key(贴纸一张) requestId(020d17b0-aed9-11ea-a864-4c32758a1b6f) ex(100) err(read tcp 10.18.26.146:58748->117.50.133.16:6379: read: operation timed out)
-2020/06/15 15:23:26.883466 s.DrawPrize Get：  请求频繁，请稍后再试
-2020/06/15 15:24:04.708790 d.GetLock key(贴纸一张) err(read tcp 10.18.26.146:58754->117.50.133.16:6379: read: operation timed out)
