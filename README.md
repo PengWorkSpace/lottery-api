@@ -16,6 +16,11 @@
 * 抽奖时候防止并发操作，采用redis的分布式锁
 * 导出操作采用 encondig/csv 库
 
+### Redis 和 MySql 
+
+Redis 和 MySql 采用Docker进行部署
+![Redis、Mysql Docker](/images/lottery3.png)
+
 
 ### 测试说明
 * 报名注册 
