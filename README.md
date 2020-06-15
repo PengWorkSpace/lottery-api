@@ -22,3 +22,6 @@
 请求地址：http://localhost:8080/lottery/join
 ![注册已存在](/images/lottery1.png)
 
+* 抽奖
+请求地址：http://localhost:8080/lottery/draw
+![抽奖请求](/images/lottery2.png)
