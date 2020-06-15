@@ -4,6 +4,7 @@ import (
 	"context"
 	"lottery-api/internal/model"
 	"math/rand"
+	"strconv"
 	"time"
 
 	"github.com/google/uuid"
@@ -33,11 +34,16 @@ func (s *Svc) DrawPrize(c context.Context, phone int64) (drawReply *model.DrawRe
 		return
 	}
 
+	verify := VerifyUserWinOver(s, c, phone)
+	if verify {
+		drawReply.Msg = "当日已达到最大抽奖次数，请明天再来哦"
+		return
+	}
+
 	if curPrize.IsUnlimited() { // 无限奖品 贴纸
 		drawReply.IsWin = true
 		drawReply.Prize = curPrize
 		drawReply.Msg = curPrizeName
-		s.dao.Logger.Println("s.DrawPrize Get： ", drawReply.Msg)
 		return
 	}
 
@@ -72,11 +78,28 @@ func (s *Svc) DrawPrize(c context.Context, phone int64) (drawReply *model.DrawRe
 	return
 }
 
+func VerifyUserWinOver(s *Svc, c context.Context, phone int64) (isOk bool) {
+	t := time.Now()
+	tm1 := time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
+	tm2 := tm1.AddDate(0, 0, 1)
+	start := tm1.Format("2006-01-02 15:04:05")
+	end := tm2.Format("2006-01-02 15:04:05")
+	where := " where phone = " + strconv.FormatInt(phone, 10) + " and create_time > " + start + " and create_time <= " + end
+
+	userPrizes, err := s.dao.FindOnePrize(c, where)
+	if err != nil {
+		s.dao.Logger.Println("s.FindOnePrize err", err)
+		return true
+	}
+	if userPrizes != nil && userPrizes.Id > 0 {
+		return true
+	}
+	return false
+}
+
 func (s *Svc) prizeMatching(code int) (curPrize model.PrizeKey, curPrizeName string) {
 	curPrize = model.Paster
 	curPrizeName = model.PrizeNames[curPrize]
-
-	//s.dao.Logger.Println("s.prizeMatching code=", code)
 
 	for i, prize := range model.PrizeList { // 从奖品列表中匹配，是否中奖
 		rate := &model.RateList[i]
